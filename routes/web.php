@@ -9,6 +9,7 @@ use App\Http\Controllers\MainSite\SiteManagementController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
+//22222
 
 Route::prefix(LaravelLocalization::setLocale(''))->group(function(){
 
@@ -40,10 +41,10 @@ Route::prefix('E-commerce')->group(function(){
     Route::get('/shop/category/{category}',[SiteManagementController::class,'ShopCategory'])->name('E-commerce.ShopCategory');
     Route::get('/shop/SubCategory/{SubCategory}',[SiteManagementController::class,'ShopSubCategory'])->name('E-commerce.ShopSubCategory');
     Route::get('/shop/product/{product}',[SiteManagementController::class,'ProductPage'])->name('E-commerce.product');
-   
+
     Route::get('/cart',[SiteManagementController::class,'ShowCart'])->name('E-commerce.Cart');
     Route::post('/cart',[SiteManagementController::class,'AddCart']);
-   
+
 
     Route::view('/about','MainSite.about')->name('E-commerce.about');
 

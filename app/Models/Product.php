@@ -10,4 +10,9 @@ class Product extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded = [] ;
+
+    public function c_parent()
+    {
+        return $this->belongsTo(Category::class,'category_id')->withDefault();
+    }
 }

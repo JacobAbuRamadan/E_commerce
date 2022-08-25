@@ -19,8 +19,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
-        return view('admin.products.index',compact('products'));
+        $products=Product::paginate(5);
+        $categories= Category::select(['id','name'])->get();
+        return view('admin.products.index',compact('products','categories'));
     }
 
     /**
@@ -88,7 +89,12 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $products = product::select(['id','name'])->get();
+        $product =  product::findOrFail($id);
+        $categories= Category::select(['id','name'])->get();
+
+
+        return view('admin.products.edit', compact('products','product','categories'));
     }
 
     /**
@@ -100,7 +106,34 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required|min:3',
+            'image'=>'nullable|image|mimes:png,jpg,jpeg,svg',
+            'description'=>'required',
+            'price'=>'required',
+            'quantity'=>'required',
+            'category_id'=>'required',
+        ]);
+
+
+        $product =  product::findOrFail($id);
+        $new_img_name=$product->image;
+
+        if($request->hasFile('image')){
+
+                FacadesFile::delete(public_path('uploads/images/products/'.$new_img_name));
+
+            $new_img_name=rand().rand()."_" .$request ->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('uploads/images/products/'),$new_img_name);
+              }
+
+
+        $data=$request->all();
+        $data['image'] = $new_img_name;
+
+        $product->update($data);
+
+        return redirect()-> route('admin.products.index')->with('msg','product updated successfuly')->with('type','info');
     }
 
     /**

@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
     <div class="d-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3  text-gray-800">{{ __('side.Add New') }}</h1>
+        <h1 class="h3  text-gray-800">{{ __('side.Add New Product') }}</h1>
         <a class="btn btn-outline-dark" href="{{ route('admin.products.index') }}"> All Products</a>
     </div>
 

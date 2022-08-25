@@ -38,9 +38,9 @@
 
                 <select name="parent_id"
                     class="form-control @error('parent_id') is-invalid" @enderror">
-                <option value=" " selected>-- Select --</option>
+                    <option value="">--Select--</option>
                 @foreach ($categories as $item)
-                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                <option {{$category->parent_id == $item->id ? 'selected':'' }} value="{{ $item->id }}" > {{ $item->name}}</option>
                     @endforeach
 
                 </select>

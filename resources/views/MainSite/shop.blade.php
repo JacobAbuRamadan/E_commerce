@@ -60,6 +60,7 @@
                     </div>
                 </div>
             </div>
+            {{-- fsdfsd  --}}
             <div class="row">
                 @foreach ($products as $product)
                 <div class="col-md-4">

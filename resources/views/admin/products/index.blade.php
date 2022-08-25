@@ -45,9 +45,9 @@
                     <td>{{ $product->description }}</td>
                     <td>${{ $product->price }}</td>
                     <td>{{ $product->quantity }}</td>
-                    <td>{{ $product->category_id }}</td>
+                    <td>{{ $product->c_parent->name }}</td>
                     <td>{{ $product->created_at ->diffForHumans() }}</td>
-                    <td> <a class="btn btn-sm btn-primary" href="{{route('admin.categories.edit',$product->id)}}"><i class="fas fa-edit"></i></a>
+                    <td> <a class="btn btn-sm btn-primary" href="{{route('admin.products.edit',$product->id)}}"><i class="fas fa-edit"></i></a>
                         <form class="d-inline" action="{{route('admin.products.destroy',$product->id)}}" method="POST">
                         @csrf
                         @method('delete')
@@ -65,5 +65,5 @@
 
     </table>
 
-
+    {{ $products->links() }}
 @stop

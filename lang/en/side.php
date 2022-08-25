@@ -13,6 +13,8 @@
         "Profile" => "Profile",
         "Logout" => " Logout",
         "Edit Category" => " Edit Category",
+        "Add New Category"=>"Add New Category",
+        "Add New Product"=>"Add New Product",
 
 
 

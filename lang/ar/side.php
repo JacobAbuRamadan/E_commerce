@@ -12,6 +12,8 @@
         "Profile" => " الملف الشخصي ",
         "Logout" => " تسجيل الخروج ",
         "Edit Category" => " تعديل الاقسام ",
+        "Add New Category"=>"اضافة قسم جديد",
+        "Add New Product"=>"اضافة منتج جديد",
 
 
     ];

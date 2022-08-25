@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('admin.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span> {{ __('side.Dashboard')}} </span></a>
             </li>
@@ -49,7 +49,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('admin.products.index') }}">{{ __('side.All Products')}}</a>
-                        <a class="collapse-item" href="cards.html">{{ __('side.Add New')}}</a>
+                        <a class="collapse-item" href="{{ route('admin.products.create') }}">{{ __('side.Add New')}}</a>
                         <a class="collapse-item" href="cards.html">{{ __('side.trash')}}</a>
                     </div>
                 </div>

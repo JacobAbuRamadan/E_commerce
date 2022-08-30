@@ -33,6 +33,7 @@ Route::view('not-allowed','not-allowed')->name('not-allowed');
 
 
 // Main Site
+
 Route::prefix('E-commerce')->group(function(){
 
     Route::get('/',[SiteManagementController::class,'HomePage'])->name('E-commerce.home');

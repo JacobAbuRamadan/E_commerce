@@ -35,23 +35,23 @@ class SiteManagementController extends Controller
         $categories=Category::where('parent_id','=',null)->get();
         $subCategories=Category::where('parent_id','!=',null)->get();
 
-        $products=Product::where('category_id','=',9)->paginate(12);
-        
-        return response()->view('MainSite.shop',
-        ['categories'=>$categories,'subCategories'=>$subCategories,'products'=>$products]);
-    
-    }
-
-
-    public function ShopSubCategory(Category $subCategory){
-        $categories=Category::where('parent_id','=',null)->get();
-        $subCategories=Category::where('parent_id','!=',null)->get();
-        $products=Product::where('category_id','=',$subCategory->parent_id)->paginate(12);
+        $products=Product::where('category_id','=',$category->id)->paginate(12);
 
         return response()->view('MainSite.shop',
         ['categories'=>$categories,'subCategories'=>$subCategories,'products'=>$products]);
-    
+
     }
+
+
+    // public function ShopSubCategory(Category $subCategory){
+    //     $categories=Category::where('parent_id','=',null)->get();
+    //     $subCategories=Category::where('parent_id','!=',null)->get();
+    //     $products=Product::where('category_id',$subCategory->id)->paginate(12);
+
+    //     return response()->view('MainSite.shop',
+    //     ['categories'=>$categories,'subCategories'=>$subCategories,'products'=>$products]);
+
+    // }
 
 
     public function ProductPage(Product $product){
@@ -61,6 +61,12 @@ class SiteManagementController extends Controller
         ['product'=>$product,'products'=>$products,'categories'=>$categories]);
     }
 
+    public function ShopSubCategory(){
+        $category=Category::all();
+        $products2=Product::all();
+        return view('MainSite.shop',compact('category','products2'));
+    }
+
 
     public function Message(Request $request){
         $validator=validator($request->all(),[
@@ -68,7 +74,7 @@ class SiteManagementController extends Controller
             'email'=>'required|email',
             'subject'=>'required|string',
             'message'=>'required|string',
-            
+
         ]);
 
         if(!$validator->fails()){
@@ -92,7 +98,7 @@ class SiteManagementController extends Controller
 
 
     public function ShowCart(){
-        
+
     }
 
     public function AddCart(){

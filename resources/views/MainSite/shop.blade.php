@@ -4,6 +4,11 @@
 
 
 @section('contant')
+@foreach ($products2 as $product)
+{{ dd($product) }}
+
+@endforeach
+
   <!-- Start Content -->
   <div class="container py-5">
     <div class="row">
@@ -13,7 +18,7 @@
             <ul class="list-unstyled templatemo-accordion">
                 @foreach ($categories as $category)
                 <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" 
+                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none"
                     href="#">
                         {{$category->name}}
                         <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
@@ -21,17 +26,17 @@
                     <ul class="collapse show list-unstyled pl-3">
                         @foreach ($subCategories as $subCategory )
                             @if ($subCategory->parent_id == $category->id)
-                                <li><a class="text-decoration-none" 
+                                <li><a class="text-decoration-none"
                                     href="{{route('E-commerce.ShopSubCategory',$subCategory->id)}}">
                                     {{$subCategory->name}}</a>
-                                </li>   
+                                </li>
                             @endif
-                            
+
                         @endforeach
                     </ul>
                 </li>
                 @endforeach
-           
+
             </ul>
         </div>
 
@@ -61,6 +66,7 @@
                 </div>
             </div>
             {{-- fsdfsd  --}}
+
             <div class="row">
                 @foreach ($products as $product)
                 <div class="col-md-4">
@@ -102,7 +108,7 @@
                     </div>
                 </div>
                 @endforeach
-                
+
             </div>
             {{$products->links()}}
             {{-- <div div="row">
@@ -151,7 +157,7 @@
                             <!--Slides-->
                             <div class="carousel-inner product-links-wap" role="listbox">
 
-                          
+
                                 <!--First slide-->
                                 <div class="carousel-item active">
                                     <div class="row">
@@ -190,7 +196,7 @@
                                 </div>
                                 <!--End Second slide-->
 
-                          
+
 
                             </div>
                             <!--End Slides-->
@@ -217,9 +223,9 @@
 
 
 @section('style')
-    
+
 @endsection
 
 @section('script')
-    
+
 @endsection
